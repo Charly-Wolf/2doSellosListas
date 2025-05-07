@@ -1,10 +1,47 @@
+import Ionicons from '@expo/vector-icons/Ionicons'
 import { Tabs } from 'expo-router'
 
 export default function RootLayout() {
   return (
-    <Tabs>
-      <Tabs.Screen name='index' options={{ title: 'Home' }} />
-      <Tabs.Screen name='addPlayer' options={{ title: 'Add Player' }} />
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: '#0ecb86',
+        headerStyle: {
+          backgroundColor: '#25292e',
+        },
+        headerTintColor: '#fff',
+        headerTitleAlign: 'center',
+        tabBarStyle: {
+          backgroundColor: '#25292e',
+        },
+      }}
+    >
+      <Tabs.Screen
+        name='index'
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? 'home-sharp' : 'home-outline'}
+              color={color}
+              size={24}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name='addPlayer'
+        options={{
+          title: 'Add Player',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? 'person-add' : 'person-add-outline'}
+              color={color}
+              size={24}
+            />
+          ),
+        }}
+      />
     </Tabs>
   )
 }
