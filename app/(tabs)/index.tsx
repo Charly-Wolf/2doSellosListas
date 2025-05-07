@@ -1,6 +1,7 @@
-import { Link } from 'expo-router'
+// import AntDesign from '@expo/vector-icons/AntDesign'
+// import { Link } from 'expo-router'
 import { StyleSheet, View } from 'react-native'
-import PlayersList from '../components/PlayersList'
+import PlayersList from '../../components/PlayersList'
 
 export default function Index() {
   return (
@@ -8,9 +9,9 @@ export default function Index() {
       <View style={styles.listContainer}>
         <PlayersList />
       </View>
-      <Link href='/addPlayer' style={styles.linkButton}>
-        Add Player
-      </Link>
+      {/* <Link href='/addPlayer' style={styles.linkButton}>
+        <AntDesign name='adduser' style={styles.addPlayerIcon} />
+      </Link> */}
     </View>
   )
 }
@@ -22,7 +23,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#25292e',
   },
   listContainer: {
-    height: '90%',
     width: '100%',
     alignItems: 'center',
     marginTop: 8,
@@ -32,4 +32,8 @@ const styles = StyleSheet.create({
     color: 'white',
     marginVertical: 8,
   },
+  // addPlayerIcon: {
+  //   color: 'white',
+  //   fontSize: 30,
+  // },
 })
