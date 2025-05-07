@@ -14,6 +14,7 @@ export default function RootLayout() {
         tabBarStyle: {
           backgroundColor: '#25292e',
         },
+        tabBarShowLabel: false,
       }}
     >
       <Tabs.Screen
@@ -24,7 +25,7 @@ export default function RootLayout() {
             <Ionicons
               name={focused ? 'home-sharp' : 'home-outline'}
               color={color}
-              size={24}
+              size={30}
             />
           ),
         }}
@@ -37,7 +38,7 @@ export default function RootLayout() {
             <Ionicons
               name={focused ? 'person-add' : 'person-add-outline'}
               color={color}
-              size={24}
+              size={30}
             />
           ),
         }}
