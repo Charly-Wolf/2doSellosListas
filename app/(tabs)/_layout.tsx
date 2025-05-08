@@ -23,7 +23,7 @@ export default function RootLayout() {
           title: 'Ligas',
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
-              name={focused ? 'home-sharp' : 'home-outline'}
+              name={focused ? 'list-sharp' : 'list-outline'}
               color={color}
               size={30}
             />
