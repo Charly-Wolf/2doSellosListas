@@ -23,5 +23,5 @@ const PlayersList = () => {
 export default PlayersList
 
 const styles = StyleSheet.create({
-  container: { width: '80%' },
+  container: { width: '90%' },
 })
