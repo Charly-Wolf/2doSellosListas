@@ -1,6 +1,7 @@
+import { deletePlayer } from '@/storage/playerStorage'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import React from 'react'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Alert, Pressable, StyleSheet, Text, View } from 'react-native'
 import { Player } from '../models/Player'
 
 interface PlayerCardProps {
@@ -8,6 +9,32 @@ interface PlayerCardProps {
 }
 
 const PlayerCard: React.FC<PlayerCardProps> = ({ player }) => {
+  const confirmAction = (
+    title: string,
+    message: string,
+    onConfirm: () => void
+  ) => {
+    Alert.alert(
+      title,
+      message,
+      [
+        { text: 'No', style: 'cancel' },
+        { text: 'Yes', onPress: onConfirm },
+      ],
+      { cancelable: true }
+    )
+  }
+
+  const handleDelete = async () => {
+    confirmAction(
+      'Delete Player',
+      `Are you sure you want to delete ${player.name}?`,
+      async () => {
+        await deletePlayer(player.id!)
+      }
+    )
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.actionContainer}>
@@ -17,10 +44,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player }) => {
         >
           <Ionicons name='pencil-sharp' size={24} color={'white'} />
         </Pressable>
-        <Pressable
-          style={styles.actionButton}
-          onPress={() => alert(`Delete player ${player.name}?`)}
-        >
+        <Pressable style={styles.actionButton} onPress={handleDelete}>
           <Ionicons name='trash-bin-sharp' size={24} color={'red'} />
         </Pressable>
       </View>

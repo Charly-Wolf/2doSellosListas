@@ -14,7 +14,7 @@ const PlayersList = () => {
     }
 
     loadPlayers()
-  }, [])
+  }, [players])
 
   return (
     <FlatList
