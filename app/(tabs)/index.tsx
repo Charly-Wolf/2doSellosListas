@@ -62,9 +62,9 @@ export default function Home() {
   if (players.length === 0) {
     return (
       <View style={[styles.container, { paddingTop: 80 }]}>
-        <Text style={styles.text}>No players found</Text>
+        <Text style={styles.text}>No hay jugadores 🙁</Text>
         <Link href='/newPlayer' style={styles.link}>
-          Add a new player
+          Agregar jugador
         </Link>
       </View>
     )

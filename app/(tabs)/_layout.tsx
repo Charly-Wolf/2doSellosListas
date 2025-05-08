@@ -20,7 +20,7 @@ export default function RootLayout() {
       <Tabs.Screen
         name='index'
         options={{
-          title: 'Home',
+          title: 'Ligas',
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? 'home-sharp' : 'home-outline'}
@@ -34,7 +34,7 @@ export default function RootLayout() {
       <Tabs.Screen
         name='newPlayer'
         options={{
-          title: 'Add Player',
+          title: 'Agregar jugador',
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? 'person-add' : 'person-add-outline'}

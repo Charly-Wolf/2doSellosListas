@@ -25,20 +25,23 @@ const PlayerCard: React.FC<PlayerCardProps> = ({
       message,
       [
         { text: 'No', style: 'cancel' },
-        { text: 'Yes', onPress: onConfirm },
+        { text: 'Sí', onPress: onConfirm },
       ],
       { cancelable: true }
     )
   }
 
   const handleEdit = () => {
-    Alert.alert(`Edit ${player.name}?`, `NOT YET IMPLEMENTED! Sorry Ema 😅`)
+    Alert.alert(
+      `Editar nombre de "${player.name}"?`,
+      `NO IMPLEMENTADO (aún) 😅`
+    )
   }
 
   const handleDelete = async () => {
     confirmAction(
-      'Delete Player',
-      `Are you sure you want to delete ${player.name}?`,
+      'Borrar Jugador',
+      `Seguro querés borrar a "${player.name}"?`,
       async () => {
         await deletePlayer(player.id!)
         onPlayerDeleted(player.id!)

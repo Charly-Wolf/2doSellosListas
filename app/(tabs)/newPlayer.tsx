@@ -13,7 +13,7 @@ const NewPlayer = () => {
     const trimmedName = name.trim()
 
     if (trimmedName.length < 3) {
-      alert('Name must be at least 3 characters long')
+      alert('El nombre debe tener al menos 3 caracteres')
       return
     }
 
@@ -34,7 +34,7 @@ const NewPlayer = () => {
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        placeholder='Player name'
+        placeholder='Nombre del jugador'
         placeholderTextColor='#a5a5a5'
         onChangeText={onChangeName}
         value={name}
@@ -64,11 +64,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#3a3f44',
   },
   button: {
-    width: '40%',
-    borderRadius: 8,
+    width: 60,
+    height: 60,
+    borderRadius: 50,
     padding: 10,
     marginTop: 12,
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#0ecb86',
   },
 })
