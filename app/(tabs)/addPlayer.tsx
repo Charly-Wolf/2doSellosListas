@@ -1,9 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
+import Ionicons from '@expo/vector-icons/Ionicons'
+import { Pressable, StyleSheet, TextInput, View } from 'react-native'
 
 const addPlayer = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Add PLayer</Text>
+      <TextInput
+        style={styles.input}
+        placeholder='Player name'
+        placeholderTextColor='#a5a5a5'
+      />
+      <Pressable style={styles.button}>
+        <Ionicons name='add-circle' color='white' size={30} />
+      </Pressable>
     </View>
   )
 }
@@ -13,11 +21,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: '#25292e',
   },
-  text: {
+  input: {
+    marginTop: 80,
+    width: '80%',
+    borderRadius: 8,
+    margin: 12,
+    padding: 24,
     color: 'white',
-    fontSize: 20,
+    fontSize: 24,
+    backgroundColor: '#3a3f44',
+  },
+  button: {
+    width: '40%',
+    borderRadius: 8,
+    padding: 10,
+    marginTop: 12,
+    alignItems: 'center',
+    backgroundColor: '#0ecb86',
   },
 })
