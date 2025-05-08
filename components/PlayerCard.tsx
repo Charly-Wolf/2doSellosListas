@@ -6,9 +6,10 @@ import { Player } from '../models/Player'
 
 interface PlayerCardProps {
   player: Player
+  onScoreChange: (id: string, scoreChange: number) => void
 }
 
-const PlayerCard: React.FC<PlayerCardProps> = ({ player }) => {
+const PlayerCard: React.FC<PlayerCardProps> = ({ player, onScoreChange }) => {
   const confirmAction = (
     title: string,
     message: string,
@@ -25,6 +26,10 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player }) => {
     )
   }
 
+  const handleEdit = () => {
+    Alert.alert(`Edit ${player.name}?`, `NOT YET IMPLEMENTED! Sorry Ema 😅`)
+  }
+
   const handleDelete = async () => {
     confirmAction(
       'Delete Player',
@@ -38,10 +43,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player }) => {
   return (
     <View style={styles.container}>
       <View style={styles.actionContainer}>
-        <Pressable
-          style={styles.actionButton}
-          onPress={() => alert(`Edit player ${player.name}?`)}
-        >
+        <Pressable style={styles.actionButton} onPress={handleEdit}>
           <Ionicons name='pencil-sharp' size={24} color={'white'} />
         </Pressable>
         <Pressable style={styles.actionButton} onPress={handleDelete}>
@@ -50,12 +52,13 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player }) => {
       </View>
       <View style={styles.dataContainer}>
         <Text style={styles.name}>{player.name}</Text>
+        <Text style={styles.league}>League: {player.league}</Text>
         <View style={styles.scoreContainer}>
-          <Pressable>
+          <Pressable onPress={() => onScoreChange(player.id!, -1)}>
             <Ionicons name='remove-circle-outline' size={50} color={'white'} />
           </Pressable>
           <Text style={styles.score}>{player.score}</Text>
-          <Pressable>
+          <Pressable onPress={() => onScoreChange(player.id!, 1)}>
             <Ionicons name='add-circle-outline' size={50} color={'white'} />
           </Pressable>
         </View>
@@ -79,6 +82,11 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16,
     color: 'white',
+    marginHorizontal: 10,
+  },
+  league: {
+    fontSize: 16,
+    color: '#66f0ff',
     marginHorizontal: 10,
   },
   dataContainer: {

@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native'
 import PlayersList from '../../components/PlayersList'
 
-export default function Index() {
+export default function Home() {
   return (
     <View style={styles.container}>
       <View style={styles.listContainer}>
