@@ -7,9 +7,14 @@ import { Player } from '../models/Player'
 interface PlayerCardProps {
   player: Player
   onScoreChange: (id: string, scoreChange: number) => void
+  onPlayerDeleted: (id: string) => void
 }
 
-const PlayerCard: React.FC<PlayerCardProps> = ({ player, onScoreChange }) => {
+const PlayerCard: React.FC<PlayerCardProps> = ({
+  player,
+  onScoreChange,
+  onPlayerDeleted,
+}) => {
   const confirmAction = (
     title: string,
     message: string,
@@ -36,6 +41,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, onScoreChange }) => {
       `Are you sure you want to delete ${player.name}?`,
       async () => {
         await deletePlayer(player.id!)
+        onPlayerDeleted(player.id!)
       }
     )
   }
@@ -52,11 +58,16 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, onScoreChange }) => {
       </View>
       <View style={styles.dataContainer}>
         <Text style={styles.name}>{player.name}</Text>
-        <Text style={styles.league}>League: {player.league}</Text>
         <View style={styles.scoreContainer}>
-          <Pressable onPress={() => onScoreChange(player.id!, -1)}>
+          <Pressable
+            onPress={() => onScoreChange(player.id!, -1)}
+            style={{
+              opacity: player.league === 1 && player.score === 0 ? 0 : 1,
+            }}
+          >
             <Ionicons name='remove-circle-outline' size={50} color={'white'} />
           </Pressable>
+
           <Text style={styles.score}>{player.score}</Text>
           <Pressable onPress={() => onScoreChange(player.id!, 1)}>
             <Ionicons name='add-circle-outline' size={50} color={'white'} />
@@ -73,20 +84,15 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     margin: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 24,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
     alignItems: 'center',
-    backgroundColor: '#51555e',
+    backgroundColor: '#545a67',
     borderRadius: 10,
   },
   name: {
     fontSize: 16,
     color: 'white',
-    marginHorizontal: 10,
-  },
-  league: {
-    fontSize: 16,
-    color: '#66f0ff',
     marginHorizontal: 10,
   },
   dataContainer: {

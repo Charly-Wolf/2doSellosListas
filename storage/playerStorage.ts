@@ -53,6 +53,8 @@ export const updateScore = async (id: string, scoreChange: number) => {
   player.score = newScore
   players[playerIndex] = player
   await savePlayers(players)
+
+  return player
 }
 
 export const deletePlayer = async (id: string) => {
