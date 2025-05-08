@@ -31,7 +31,7 @@ export default function RootLayout() {
         }}
       />
       <Tabs.Screen
-        name='addPlayer'
+        name='newPlayer'
         options={{
           title: 'Add Player',
           tabBarIcon: ({ color, focused }) => (

@@ -1,21 +1,45 @@
+import { Player } from '@/models/Player'
+import { addPlayer } from '@/storage/playerStorage'
 import Ionicons from '@expo/vector-icons/Ionicons'
+import { useState } from 'react'
 import { Pressable, StyleSheet, TextInput, View } from 'react-native'
 
-const addPlayer = () => {
+const NewPlayer = () => {
+  const [name, onChangeName] = useState('')
+
+  const savePlayer = async () => {
+    if (name.length < 3) {
+      alert('Name must be at least 3 characters long')
+      return
+    }
+
+    const newPlayer: Player = {
+      name,
+      score: 0,
+      league: 1,
+    }
+
+    await addPlayer(newPlayer)
+
+    onChangeName('')
+  }
+
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
         placeholder='Player name'
         placeholderTextColor='#a5a5a5'
+        onChangeText={onChangeName}
+        value={name}
       />
-      <Pressable style={styles.button}>
+      <Pressable style={styles.button} onPress={savePlayer}>
         <Ionicons name='add-circle' color='white' size={30} />
       </Pressable>
     </View>
   )
 }
-export default addPlayer
+export default NewPlayer
 
 const styles = StyleSheet.create({
   container: {
