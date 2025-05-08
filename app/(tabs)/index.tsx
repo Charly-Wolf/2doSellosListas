@@ -1,4 +1,5 @@
 import LeaguesList from '@/components/LeaguesList'
+import { LeagueNames } from '@/data/data'
 import { League } from '@/models/League'
 import { Player } from '@/models/Player'
 import { getAllPlayers } from '@/storage/playerStorage'
@@ -49,7 +50,7 @@ export default function Home() {
   useEffect(() => {
     const updatedLeagues: League[] = []
 
-    for (let i = 1; i <= 8; i++) {
+    for (let i = 1; i <= Object.keys(LeagueNames).length; i++) {
       updatedLeagues.push({
         leagueNr: i,
         players: players.filter(player => player.league === i),
