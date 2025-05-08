@@ -3,7 +3,7 @@ import { Player } from '../models/Player'
 
 const STORAGE_KEY = 'players'
 
-const leagueCaps = [3, 6, 9, 12, 15, 18, 21, 24, Infinity]
+const leagueCaps = [3, 4, 5, 6, 7, 8, 9, Infinity]
 
 const getPlayers = async (): Promise<Player[]> => {
   const json = await AsyncStorage.getItem(STORAGE_KEY)
@@ -45,7 +45,7 @@ export const updateScore = async (id: string, scoreChange: number) => {
     newScore = leagueCaps[player.league - 1]
   }
 
-  if (newScore > leagueCaps[player.league - 1] && player.league < 9) {
+  if (newScore > leagueCaps[player.league - 1] && player.league < 8) {
     player.league = (player.league + 1) as Player['league']
     newScore = 0
   }

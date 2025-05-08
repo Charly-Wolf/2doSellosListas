@@ -49,7 +49,7 @@ export default function Home() {
   useEffect(() => {
     const updatedLeagues: League[] = []
 
-    for (let i = 1; i <= 9; i++) {
+    for (let i = 1; i <= 8; i++) {
       updatedLeagues.push({
         leagueNr: i,
         players: players.filter(player => player.league === i),
